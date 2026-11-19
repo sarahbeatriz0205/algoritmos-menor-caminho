@@ -1,4 +1,4 @@
-package src.grafo;
+package grafo;
 
 public class Adjacencia {
     private Vertice vertice;

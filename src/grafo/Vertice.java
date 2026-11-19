@@ -1,4 +1,4 @@
-package src.grafo;
+package grafo;
 import java.util.Vector;
 
 public class Vertice {

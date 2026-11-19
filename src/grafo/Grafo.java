@@ -1,4 +1,4 @@
-package src.grafo;
+package grafo;
 import java.util.Vector;
 
 public class Grafo {
@@ -12,6 +12,18 @@ public class Grafo {
         this.numArestas = 0;
         this.vertices = new Vector<Vertice>();
         this.arestas = new Vector<Aresta>();
+    }
+
+    public int getNumVertices() {
+        return this.numVertices;
+    }
+
+    public int getNumArestas() {
+        return this.numArestas;
+    }
+
+    public Vector<Vertice> getVertices() {
+        return this.vertices;
     }
 
     public Vertice[] finalVertices(Aresta aresta) {
