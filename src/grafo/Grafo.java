@@ -79,15 +79,15 @@ public class Grafo {
         this.numArestas++;
 
         if (ehDirecionada) {
-            Adjacencia adj = new Adjacencia(vertice2, novaAresta);
+            Adjacencia adj = new Adjacencia(vertice2, novaAresta, novaAresta.getValor());
             vertice1.getAdjacencias().add(adj);
             vertice1.setGrau(vertice1.getGrau()+1);
             vertice2.setGrauEntrada(vertice2.getGrauEntrada()+1);
             return;
         }
         // se ela for paralela (não direcionada), só adiciono dois obj Adjacencia na lista dos dois e mudo o grau
-        Adjacencia adjVertice1 = new Adjacencia(vertice2, novaAresta);
-        Adjacencia adjVertice2 = new Adjacencia(vertice1, novaAresta);
+        Adjacencia adjVertice1 = new Adjacencia(vertice2, novaAresta, novaAresta.getValor());
+        Adjacencia adjVertice2 = new Adjacencia(vertice1, novaAresta, novaAresta.getValor());
         vertice1.getAdjacencias().add(adjVertice1);
         vertice2.getAdjacencias().add(adjVertice2);
 
