@@ -3,19 +3,29 @@ import java.util.Vector;
 
 public class Vertice {
     private int verticeId;
-    private int grauEntrada; // lembrar de mudar na matriz
-    // grauSaida vai ter o conceito de grau em grafos não direcionados caso ele não seja direcionado
-    // se for direcionado, mudo grauEntrada e grauSaida. senão, mudo só grauSaida em ambos os vértices
+    private int grauEntrada; 
     private int grauSaida;
     private Object elemento;
-    private Vector<Adjacencia> adjacentes; // o vértice vai ter suas adjacências, contendo vertice-aresta
+    private Vector<Adjacencia> adjacentes;
+    private int coordenadaX; 
+    private int coordenadaY;
 
-    public Vertice(Object elemento, int numVertices) {
+    // para o A*
+    private int distanciaReal; // g(n)
+    private int distanciaHeuristica; // h(n)
+    private int custoTotal; // f(n)
+
+    public Vertice(Object elemento, int numVertices, int coordenadaX, int coordenadaY) {
         this.elemento = elemento;
         this.verticeId = numVertices+1;
         this.adjacentes = new Vector<Adjacencia>();
         this.grauSaida = 0;
         this.grauEntrada = 0;
+        this.distanciaReal = 0;
+        this.distanciaHeuristica = 0;
+        this.custoTotal = 0;
+        this.coordenadaX = coordenadaX;
+        this.coordenadaY = coordenadaY;
     }
 
     public Vector<Adjacencia> getAdjacencias() {
@@ -38,6 +48,26 @@ public class Vertice {
         return this.elemento;
     }
 
+    public int getDistanciaReal() {
+        return this.distanciaReal;
+    }
+
+    public int getDistanciaHeuristica() {
+        return this.distanciaHeuristica;
+    }
+
+    public int getCustoTotal() {
+        return this.custoTotal;
+    }
+
+    public int getCoordenadaX() {
+        return this.coordenadaX;
+    }
+
+    public int getCoordenadaY() {
+        return this.coordenadaY;
+    }
+
     public void substituir(Object elemento) {
         this.elemento = elemento;
     }
@@ -52,5 +82,17 @@ public class Vertice {
 
     public void setAdjacencia(Vector<Adjacencia> adjacencias) {
         this.adjacentes = adjacencias;
+    }
+
+    public void setDistanciaReal(int distanciaReal) {
+        this.distanciaReal = distanciaReal;
+    }
+
+    public void setDistanciaHeuristica(int distanciaHeuristica) {
+        this.distanciaHeuristica = distanciaHeuristica;
+    }
+
+    public void setCustoTotal(int custoTotal) {
+        this.custoTotal = custoTotal;
     }
 }

@@ -12,6 +12,7 @@ public class MenorCaminho {
         this.grafo = grafo;
     }
 
+    // para dijkstra e o custo real (g(n)) no A*
     private int encontraDistancia(Vertice v1, Vertice v2) {
         for (Adjacencia adj : v1.getAdjacencias()) {
                 if (adj.getVertice().equals(v2)) {
@@ -21,7 +22,14 @@ public class MenorCaminho {
         return Integer.MAX_VALUE; // simula o infinito. se nao existir adjacencia, nao existe distancia, então é infinito
     }
 
-    public void executaDijkstra(Vertice origem) {
+    // menor custo computacional e funciona indo pra todos os lados. nao sei se ta certo
+    private int heuristicaChebyshev(Vertice v1, Vertice v2) {
+        int absCoordenadasX = Math.abs(v1.getCoordenadaX() - v2.getCoordenadaX());
+        int absCoordenadasY = Math.abs(v1.getCoordenadaY() - v2.getCoordenadaY());
+        return Math.max(absCoordenadasX, absCoordenadasY);
+    }
+
+    public Auxiliar[] executaDijkstra(Vertice origem) {
         Vector<Vertice> verticesTotais = this.grafo.getVertices();
         Vector<Vertice> visitados = new Vector<>();
         visitados.add(origem); // começa adicionando o vertice inicial 
@@ -77,9 +85,19 @@ public class MenorCaminho {
                 }   
             }    
         }
+        return distancias;
     }
 
-    public void executaAEstrela(Vertice origem) {
-        
+    // errado
+    public void executaAEstrela(Vertice origem, Vertice destino) {
+        Vector<Vertice> listaAberta = new Vector<>(); 
+        Vector<Vertice> listaFechada = new Vector<>(); 
+        listaAberta.add(origem);
+        Vector<Adjacencia> listaAtual = origem.getAdjacencias();
+        Vertice verticePai = origem;
+
+        while (listaAtual.size() > 0) { // enquanto ainda houver distancia pra calcular na primeira passada
+            
+        }
     }
 }

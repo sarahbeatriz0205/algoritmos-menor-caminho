@@ -66,8 +66,8 @@ public class Grafo {
         aresta.substituir(valor);
     }
 
-    public void inserirVertice(Object elemento) {
-        Vertice novoVertice = new Vertice(elemento, this.numVertices);
+    public void inserirVertice(Object elemento, int coordenadaX, int coordenadaY) {
+        Vertice novoVertice = new Vertice(elemento, this.numVertices, coordenadaX, coordenadaY);
         this.vertices.add(novoVertice);
         this.numVertices++;
     }
