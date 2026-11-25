@@ -47,8 +47,8 @@ public class MenorCaminho {
         }
 
         while (visitados.size() < verticesTotais.size()) {
-            // setar menor como o primeiro só pra a comparação
-            int menor = distancias[0].getDistancia(); int indiceMenor = 0;
+            // setar infinito como menor. operacao segura, pq o menor é só pra comparar
+            int menor = Integer.MAX_VALUE; int indiceMenor = -1;
             for (int i=0; i < distancias.length; i++) { 
                 // verifica se o vertice atual ja foi visitado, ou seja, se existe na nuvem
                 if (!visitados.contains(verticesTotais.get(i))) {
@@ -69,8 +69,9 @@ public class MenorCaminho {
                 }
 
                 int somaDistancias = 0;
-                if (encontraDistancia(w, v) == Integer.MAX_VALUE) {
+                if (distancias[w.getId()].getDistancia() == Integer.MAX_VALUE || encontraDistancia(w, v) == Integer.MAX_VALUE) {
                     somaDistancias = distancias[v.getId()].getDistancia();
+                    continue;
                 }
                 else {
                     somaDistancias = distancias[w.getId()].getDistancia() + encontraDistancia(w, v);
